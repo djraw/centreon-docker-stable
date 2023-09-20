@@ -50,6 +50,16 @@ For clean all environment:
 docker-compose down -v --rmi local
 ```
 
+Once the installation finished you can edit centreon user to relax host checking (because docker IP may change) and purge the superadmin:
+```
+DROP USER 'root'@'%';
+USE mysql;
+UPDATE user SET Host='172.17.%' WHERE User='centreon';
+GRANT ALL PRIVILEGES ON centreon.* TO 'centreon'@'172.17.%';
+GRANT ALL PRIVILEGES ON centreon_storage.* TO 'centreon'@'172.17.%';
+FLUSH PRIVILEGES;
+```
+
 Screencast
 ----------
 
