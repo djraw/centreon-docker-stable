@@ -52,6 +52,10 @@ docker-compose down -v --rmi local
 
 Once the installation finished you can edit centreon user to relax host checking (because docker IP may change) and purge the superadmin:
 ```
+Shell into container
+# docker exec -it "centreon-centreon-db-1" sh
+# mysql -p
+
 DROP USER 'root'@'%';
 USE mysql;
 UPDATE user SET Host='172.17.%' WHERE User='centreon';
