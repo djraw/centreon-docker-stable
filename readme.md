@@ -58,9 +58,9 @@ Shell into container
 
 DROP USER 'root'@'%';
 USE mysql;
-UPDATE user SET Host='172.17.%' WHERE User='centreon';
-GRANT ALL PRIVILEGES ON centreon.* TO 'centreon'@'172.17.%';
-GRANT ALL PRIVILEGES ON centreon_storage.* TO 'centreon'@'172.17.%';
+UPDATE user SET Host='%' WHERE User='centreon';
+GRANT ALL PRIVILEGES ON centreon.* TO 'centreon'@'%';
+GRANT ALL PRIVILEGES ON centreon_storage.* TO 'centreon'@'%';
 FLUSH PRIVILEGES;
 ```
 
